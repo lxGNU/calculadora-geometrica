@@ -880,12 +880,12 @@ if __name__ == "__main__":
             }
         }
 
-        // Prevenir scroll del body cuando el modal está abierto
-        window.addEventListener('touchmove', function(e) {
-            if (document.querySelector('.modal.active')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+// Prevenir scroll del body SOLO cuando se toca fuera del modal
+window.addEventListener('touchmove', function(e) {
+    if (document.querySelector('.modal.active') && !e.target.closest('.modal-content')) {
+        e.preventDefault();
+    }
+}, { passive: false });
     </script>
 </body>
 </html>
